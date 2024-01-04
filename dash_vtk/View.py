@@ -11,6 +11,7 @@ It takes the following set of properties:
   - `cameraPosition`: [0, 0, 1]
   - `cameraViewUp`: [0, 1, 0]
   - `cameraParallelProjection`: false
+  - `showOrientationAxes`: true
 
 Keyword arguments:
 
@@ -21,7 +22,7 @@ Keyword arguments:
     The ID used to identify this component.
 
 - background (list; default [0.2, 0.3, 0.4]):
-    The color of the view background using 3 floating numbers between
+    The color of the view background using 3 floating numbers  between
     0-1 of Red, Green, Blue component.
 
 - cameraParallelProjection (boolean; default False):
@@ -38,24 +39,27 @@ Keyword arguments:
 
 - clickInfo (dict; optional):
     Read-only prop. To use this, make sure that `pickingModes`
-    contains `click`. This prop is updated when an element in the map
-    is clicked. This contains the picking info describing the object
+    contains `click`.  This prop is updated when an element in the map
+    is clicked. This contains  the picking info describing the object
     being clicked on.
 
 - hoverInfo (dict; optional):
     Read-only prop. To use this, make sure that `pickingModes`
-    contains `hover`. This prop is updated when an element in the map
-    is hovered. This contains the picking info describing the object
+    contains `hover`.  This prop is updated when an element in the map
+    is hovered. This contains  the picking info describing the object
     being hovered.
 
-- interactorSettings (list; default [  {    button: 1,    action: 'Rotate',  },  {    button: 2,    action: 'Pan',  },  {    button: 3,    action: 'Zoom',    scrollEnabled: True,  },  {    button: 1,    action: 'Pan',    shift: True,  },  {    button: 1,    action: 'Zoom',    alt: True,  },  {    button: 1,    action: 'ZoomToMouse',    control: True,  },  {    button: 1,    action: 'Roll',    alt: True,    shift: True,  },]):
+- interactorSettings (list; default [  {    button: 1,    action: 'Rotate',  },  {    button: 2,    action: 'Pan',  },  {    button: 3,    action: 'Zoom',    scrollEnabled: True,  },  {    button: 1,    action: 'Pan',    shift: True,  },  {    button: 1,    action: 'Zoom',    alt: True,  },  {    button: 1,    action: 'ZoomToMouse',    control: True,  },  {    button: 1,    action: 'Roll',    alt: True,    shift: True,  },]):
     Configure the interactions.
 
 - pickingModes (list of strings; optional):
     List of picking listeners to bind. The supported values are
     `click` and `hover`. By default it is disabled (empty array).
 
-- style (dict; default {  width: '100%',  height: '100%',}):
+- showOrientationAxes (boolean; default True):
+    Show/Hide orientation axes.
+
+- style (dict; default {  width: '100%',  height: '100%',}):
     Allow user to override the default View style { width: '100%',
     height: '100%' }.
 
@@ -64,20 +68,19 @@ Keyword arguments:
 
 - triggerResetCamera (number; default 0):
     Property use to trigger a resetCamera when changing."""
+    _children_props = []
+    _base_nodes = ['children']
+    _namespace = 'dash_vtk'
+    _type = 'View'
     @_explicitize_args
-    def __init__(self, children=None, id=Component.UNDEFINED, style=Component.UNDEFINED, className=Component.UNDEFINED, background=Component.UNDEFINED, interactorSettings=Component.UNDEFINED, cameraPosition=Component.UNDEFINED, cameraViewUp=Component.UNDEFINED, cameraParallelProjection=Component.UNDEFINED, triggerRender=Component.UNDEFINED, triggerResetCamera=Component.UNDEFINED, pickingModes=Component.UNDEFINED, clickInfo=Component.UNDEFINED, hoverInfo=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['children', 'id', 'background', 'cameraParallelProjection', 'cameraPosition', 'cameraViewUp', 'className', 'clickInfo', 'hoverInfo', 'interactorSettings', 'pickingModes', 'style', 'triggerRender', 'triggerResetCamera']
-        self._type = 'View'
-        self._namespace = 'dash_vtk'
+    def __init__(self, children=None, id=Component.UNDEFINED, style=Component.UNDEFINED, className=Component.UNDEFINED, background=Component.UNDEFINED, interactorSettings=Component.UNDEFINED, cameraPosition=Component.UNDEFINED, cameraViewUp=Component.UNDEFINED, cameraParallelProjection=Component.UNDEFINED, triggerRender=Component.UNDEFINED, triggerResetCamera=Component.UNDEFINED, pickingModes=Component.UNDEFINED, clickInfo=Component.UNDEFINED, hoverInfo=Component.UNDEFINED, showOrientationAxes=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['children', 'id', 'background', 'cameraParallelProjection', 'cameraPosition', 'cameraViewUp', 'className', 'clickInfo', 'hoverInfo', 'interactorSettings', 'pickingModes', 'showOrientationAxes', 'style', 'triggerRender', 'triggerResetCamera']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['children', 'id', 'background', 'cameraParallelProjection', 'cameraPosition', 'cameraViewUp', 'className', 'clickInfo', 'hoverInfo', 'interactorSettings', 'pickingModes', 'style', 'triggerRender', 'triggerResetCamera']
+        self.available_properties = ['children', 'id', 'background', 'cameraParallelProjection', 'cameraPosition', 'cameraViewUp', 'className', 'clickInfo', 'hoverInfo', 'interactorSettings', 'pickingModes', 'showOrientationAxes', 'style', 'triggerRender', 'triggerResetCamera']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
-        _locals.update(kwargs)  # For wildcard attrs
+        _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
-        for k in []:
-            if k not in args:
-                raise TypeError(
-                    'Required argument `' + k + '` was not specified.')
+
         super(View, self).__init__(children=children, **args)

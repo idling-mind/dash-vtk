@@ -1,6 +1,6 @@
 {
   "src/lib/components/Algorithm.react.js": {
-    "description": "Algorithm is exposing a source or filter to a downstream filter\nIt takes the following set of properties:\n  - vtkClass: vtkClassName\n  - state: {}",
+    "description": "Algorithm is exposing a source or filter to a downstream filter\r\nIt takes the following set of properties:\r\n  - vtkClass: vtkClassName\r\n  - state: {}",
     "displayName": "Algorithm",
     "methods": [],
     "props": {
@@ -65,7 +65,7 @@
     }
   },
   "src/lib/components/Calculator.react.js": {
-    "description": "Calculator is exposing a source or filter to a downstream filter\nIt takes the following set of properties:\n  - name: 'scalars'    // name of the generated field\n  - location: 'POINT'  // POINT/CELL\n  - arrays: []         // Name of array to have access in formula\n  - formula: fn",
+    "description": "Calculator is exposing a source or filter to a downstream filter\r\nIt takes the following set of properties:\r\n  - name: 'scalars'    // name of the generated field\r\n  - location: 'POINT'  // POINT/CELL\r\n  - arrays: []         // Name of array to have access in formula\r\n  - formula: fn",
     "displayName": "Calculator",
     "methods": [],
     "props": {
@@ -180,7 +180,7 @@
     }
   },
   "src/lib/components/DataArray.react.js": {
-    "description": "DataArray is creating a vtkDataArray for the container fields\nIt takes the following set of properties:\n  - type: 'Float32Array', 'Float64Array', 'Uint16Array', ...\n  - values: [number, number, ...]\n  - numberOfComponents: 1,\n  - registration: 'addArray', 'setScalars', ...",
+    "description": "DataArray is creating a vtkDataArray for the container fields\r\nIt takes the following set of properties:\r\n  - type: 'Float32Array', 'Float64Array', 'Uint16Array', ...\r\n  - values: [number, number, ...]\r\n  - numberOfComponents: 1,\r\n  - registration: 'addArray', 'setScalars', ...",
     "displayName": "DataArray",
     "methods": [],
     "props": {
@@ -277,7 +277,7 @@
     }
   },
   "src/lib/components/GeometryRepresentation.react.js": {
-    "description": "GeometryRepresentation is responsible to convert a vtkPolyData into rendering\nIt takes the following set of properties:\n  - actor: Properties to assign to the vtkActor\n  - mapper: Properties to assign to the vtkMapper\n  - property: Properties to assign to the vtkProperty (actor.getProperty())\n  - colorMapPreset: Name of the preset to use for controlling the color mapping\n  - colorDataRange: Range to use for the color scale",
+    "description": "GeometryRepresentation is responsible to convert a vtkPolyData into rendering\r\nIt takes the following set of properties:\r\n  - actor: Properties to assign to the vtkActor\r\n  - mapper: Properties to assign to the vtkMapper\r\n  - property: Properties to assign to the vtkProperty (actor.getProperty())\r\n  - colorMapPreset: Name of the preset to use for controlling the color mapping\r\n  - colorDataRange: Range to use for the color scale",
     "displayName": "GeometryRepresentation",
     "methods": [],
     "props": {
@@ -339,14 +339,47 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Show/Hide Cube Axes for the given representation"
+        "description": "Show/Hide Cube Axes for the given representation",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
       },
       "cubeAxesStyle": {
         "type": {
           "name": "object"
         },
         "required": false,
-        "description": "Configure cube Axes style by overriding the set of properties defined\nhttps://github.com/Kitware/vtk-js/blob/HEAD/Sources/Rendering/Core/CubeAxesActor/index.js#L703-L719"
+        "description": "Configure cube Axes style by overriding the set of properties defined\r\nhttps://github.com/Kitware/vtk-js/blob/HEAD/Sources/Rendering/Core/CubeAxesActor/index.js#L703-L719"
+      },
+      "showScalarBar": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show hide scalar bar for that representation",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "scalarBarTitle": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Use given string as title for scalar bar. By default it is empty (no title).",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "scalarBarStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Configure scalar bar style by overriding the set of properties defined\r\nhttps://github.com/Kitware/vtk-js/blob/master/Sources/Rendering/Core/ScalarBarActor/index.js#L776-L796"
       },
       "children": {
         "type": {
@@ -369,7 +402,7 @@
     }
   },
   "src/lib/components/GlyphRepresentation.react.js": {
-    "description": "GlyphRepresentation using a source on port=1 as Glyph and the points of the source on port=0 to position the given glyphs\nIt takes the following set of properties:\n- actor: Properties to assign to the vtkActor\n- mapper: Properties to assign to the vtkGlyph3DMapper\n- property: Properties to assign to the vtkProperty (actor.getProperty())\n- colorMapPreset: Name of the preset to use for controlling the color mapping\n- colorDataRange: Range to use for the color scale",
+    "description": "GlyphRepresentation using a source on port=1 as Glyph and the points of the source on port=0 to position the given glyphs\r\nIt takes the following set of properties:\r\n- actor: Properties to assign to the vtkActor\r\n- mapper: Properties to assign to the vtkGlyph3DMapper\r\n- property: Properties to assign to the vtkProperty (actor.getProperty())\r\n- colorMapPreset: Name of the preset to use for controlling the color mapping\r\n- colorDataRange: Range to use for the color scale",
     "displayName": "GeometryRepresentation",
     "methods": [],
     "props": {
@@ -447,7 +480,7 @@
     }
   },
   "src/lib/components/ImageData.react.js": {
-    "description": "ImageData is exposing a vtkImageData to a downstream filter\nIt takes the following set of properties:\n  - dimensions: [nx, ny, nz],\n  - origin: [0, 0, 0]\n  - spacing: [1, 1, 1]\n  - direction: [\n      1, 0, 0,\n      0, 1, 0,\n      0, 0, 1\n    ]",
+    "description": "ImageData is exposing a vtkImageData to a downstream filter\r\nIt takes the following set of properties:\r\n  - dimensions: [nx, ny, nz],\r\n  - origin: [0, 0, 0]\r\n  - spacing: [1, 1, 1]\r\n  - direction: [\r\n      1, 0, 0,\r\n      0, 1, 0,\r\n      0, 0, 1\r\n    ]",
     "displayName": "ImageData",
     "methods": [],
     "props": {
@@ -521,7 +554,7 @@
         "required": false,
         "description": "3x3 matrix use to orient the image data",
         "defaultValue": {
-          "value": "[\n  1, 0, 0,\n  0, 1, 0,\n  0, 0, 1,\n]",
+          "value": "[\r\n  1, 0, 0,\r\n  0, 1, 0,\r\n  0, 0, 1,\r\n]",
           "computed": false
         }
       },
@@ -546,7 +579,7 @@
     }
   },
   "src/lib/components/Mesh.react.js": {
-    "description": "Mesh is exposing a vtkPolyData to a downstream filter\nIt takes the following set of properties:\n  - state: { mesh: { ...polydata-props }, field: { ...dataArray } }",
+    "description": "Mesh is exposing a vtkPolyData to a downstream filter\r\nIt takes the following set of properties:\r\n  - state: { mesh: { ...polydata-props }, field: { ...dataArray } }",
     "displayName": "Mesh",
     "methods": [],
     "props": {
@@ -575,17 +608,24 @@
         "required": false,
         "description": "State of the mesh",
         "defaultValue": {
-          "value": "{\n  mesh: { points: [] },\n}",
+          "value": "{\r\n  mesh: { points: [] },\r\n}",
           "computed": false
         }
       }
     }
   },
   "src/lib/components/PointCloudRepresentation.react.js": {
-    "description": "PointCloudRepresentation expect the following set of properties\n  - xyz: [x0, y0, z0, x1, ..., zn]\n  - rgb: [...]\n  - rgba: [...]\n  - scalars: [...]",
+    "description": "PointCloudRepresentation expect the following set of properties\r\n  - xyz: [x0, y0, z0, x1, ..., zn]\r\n  - rgb: [...]\r\n  - rgba: [...]\r\n  - scalars: [...]",
     "displayName": "PointCloudRepresentation",
     "methods": [],
     "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component."
+      },
       "xyz": {
         "type": {
           "name": "arrayOf",
@@ -661,6 +701,53 @@
         },
         "required": false,
         "description": "Properties to set to the actor.property"
+      },
+      "showCubeAxes": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show/Hide Cube Axes for the given representation",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "cubeAxesStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Configure cube Axes style by overriding the set of properties defined\r\nhttps://github.com/Kitware/vtk-js/blob/HEAD/Sources/Rendering/Core/CubeAxesActor/index.js#L703-L719"
+      },
+      "showScalarBar": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show hide scalar bar for that representation",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "scalarBarTitle": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Use given string as title for scalar bar. By default it is empty (no title).",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "scalarBarStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Configure scalar bar style by overriding the set of properties defined\r\nhttps://github.com/Kitware/vtk-js/blob/master/Sources/Rendering/Core/ScalarBarActor/index.js#L776-L796"
       }
     }
   },
@@ -690,7 +777,7 @@
     }
   },
   "src/lib/components/PolyData.react.js": {
-    "description": "PolyData is exposing a vtkPolyData to a downstream filter\nIt takes the following set of properties:\n  - points: [x, y, z, x, y, z, ...],\n  - verts: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\n  - lines: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\n  - polys: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\n  - strips: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\nCell connectivity helper property:\n  - connectivity: 'manual', // [manual, points, triangles, strips]",
+    "description": "PolyData is exposing a vtkPolyData to a downstream filter\r\nIt takes the following set of properties:\r\n  - points: [x, y, z, x, y, z, ...],\r\n  - verts: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\r\n  - lines: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\r\n  - polys: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\r\n  - strips: [cellSize, pointId0, pointId1, ..., cellSize, pointId0, ...]\r\nCell connectivity helper property:\r\n  - connectivity: 'manual', // [manual, points, triangles, strips]",
     "displayName": "PolyData",
     "methods": [],
     "props": {
@@ -798,7 +885,7 @@
     }
   },
   "src/lib/components/Reader.react.js": {
-    "description": "Reader is exposing a reader to a downstream filter\nIt takes the following set of properties:\n  - vtkClass: vtk.js reader class name\n  - url: string\n  - parseAsText: string\n  - parseAsArrayBuffer: base64String",
+    "description": "Reader is exposing a reader to a downstream filter\r\nIt takes the following set of properties:\r\n  - vtkClass: vtk.js reader class name\r\n  - url: string\r\n  - parseAsText: string\r\n  - parseAsArrayBuffer: base64String",
     "displayName": "Reader",
     "methods": [],
     "props": {
@@ -895,7 +982,7 @@
     }
   },
   "src/lib/components/ShareDataSet.react.js": {
-    "description": "ShareDataSet capture a dataset or a source and allow it to use it in another\npipeline or representation.",
+    "description": "ShareDataSet capture a dataset or a source and allow it to use it in another\r\npipeline or representation.",
     "displayName": "ShareDataSet",
     "methods": [],
     "props": {
@@ -949,7 +1036,7 @@
     }
   },
   "src/lib/components/SliceRepresentation.react.js": {
-    "description": "SliceRepresentation is responsible to convert a vtkPolyData into rendering\nIt takes the following set of properties:\n  - colorBy: ['POINTS', ''],\n  - pointSize: 1,\n  - color: [1,1,1],",
+    "description": "SliceRepresentation is responsible to convert a vtkPolyData into rendering\r\nIt takes the following set of properties:\r\n  - colorBy: ['POINTS', ''],\r\n  - pointSize: 1,\r\n  - color: [1,1,1],",
     "displayName": "SliceRepresentation",
     "methods": [],
     "props": {
@@ -1077,7 +1164,7 @@
     }
   },
   "src/lib/components/View.react.js": {
-    "description": "View is responsible to render vtk.js data.\nIt takes the following set of properties:\n  - `background`: [0.2, 0.3, 0.4]\n  - `cameraPosition`: [0, 0, 1]\n  - `cameraViewUp`: [0, 1, 0]\n  - `cameraParallelProjection`: false",
+    "description": "View is responsible to render vtk.js data.\r\nIt takes the following set of properties:\r\n  - `background`: [0.2, 0.3, 0.4]\r\n  - `cameraPosition`: [0, 0, 1]\r\n  - `cameraViewUp`: [0, 1, 0]\r\n  - `cameraParallelProjection`: false\r\n  - `showOrientationAxes`: true",
     "displayName": "View",
     "methods": [],
     "props": {
@@ -1095,7 +1182,7 @@
         "required": false,
         "description": "Allow user to override the default View style { width: '100%', height: '100%' }",
         "defaultValue": {
-          "value": "{\n  width: '100%',\n  height: '100%',\n}",
+          "value": "{\r\n  width: '100%',\r\n  height: '100%',\r\n}",
           "computed": false
         }
       },
@@ -1111,7 +1198,7 @@
           "name": "array"
         },
         "required": false,
-        "description": "The color of the view background using 3 floating numbers\nbetween 0-1 of Red, Green, Blue component.",
+        "description": "The color of the view background using 3 floating numbers\r\nbetween 0-1 of Red, Green, Blue component.",
         "defaultValue": {
           "value": "[0.2, 0.3, 0.4]",
           "computed": false
@@ -1124,7 +1211,7 @@
         "required": false,
         "description": "Configure the interactions",
         "defaultValue": {
-          "value": "[\n  {\n    button: 1,\n    action: 'Rotate',\n  },\n  {\n    button: 2,\n    action: 'Pan',\n  },\n  {\n    button: 3,\n    action: 'Zoom',\n    scrollEnabled: true,\n  },\n  {\n    button: 1,\n    action: 'Pan',\n    shift: true,\n  },\n  {\n    button: 1,\n    action: 'Zoom',\n    alt: true,\n  },\n  {\n    button: 1,\n    action: 'ZoomToMouse',\n    control: true,\n  },\n  {\n    button: 1,\n    action: 'Roll',\n    alt: true,\n    shift: true,\n  },\n]",
+          "value": "[\r\n  {\r\n    button: 1,\r\n    action: 'Rotate',\r\n  },\r\n  {\r\n    button: 2,\r\n    action: 'Pan',\r\n  },\r\n  {\r\n    button: 3,\r\n    action: 'Zoom',\r\n    scrollEnabled: true,\r\n  },\r\n  {\r\n    button: 1,\r\n    action: 'Pan',\r\n    shift: true,\r\n  },\r\n  {\r\n    button: 1,\r\n    action: 'Zoom',\r\n    alt: true,\r\n  },\r\n  {\r\n    button: 1,\r\n    action: 'ZoomToMouse',\r\n    control: true,\r\n  },\r\n  {\r\n    button: 1,\r\n    action: 'Roll',\r\n    alt: true,\r\n    shift: true,\r\n  },\r\n]",
           "computed": false
         }
       },
@@ -1198,14 +1285,14 @@
           "name": "object"
         },
         "required": false,
-        "description": "Read-only prop. To use this, make sure that `pickingModes` contains `click`.\nThis prop is updated when an element in the map is clicked. This contains\nthe picking info describing the object being clicked on."
+        "description": "Read-only prop. To use this, make sure that `pickingModes` contains `click`.\r\nThis prop is updated when an element in the map is clicked. This contains\r\nthe picking info describing the object being clicked on."
       },
       "hoverInfo": {
         "type": {
           "name": "object"
         },
         "required": false,
-        "description": "Read-only prop. To use this, make sure that `pickingModes` contains `hover`.\nThis prop is updated when an element in the map is hovered. This contains\nthe picking info describing the object being hovered."
+        "description": "Read-only prop. To use this, make sure that `pickingModes` contains `hover`.\r\nThis prop is updated when an element in the map is hovered. This contains\r\nthe picking info describing the object being hovered."
       },
       "children": {
         "type": {
@@ -1224,11 +1311,22 @@
         },
         "required": false,
         "description": "List of representation to show"
+      },
+      "showOrientationAxes": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show/Hide orientation axes.",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
       }
     }
   },
   "src/lib/components/Volume.react.js": {
-    "description": "Volume is exposing a vtkImageData to a downstream filter\nIt takes the following set of properties:\n  - state: { image: { ...imagedata-props }, field: { ...dataArray } }",
+    "description": "Volume is exposing a vtkImageData to a downstream filter\r\nIt takes the following set of properties:\r\n  - state: { image: { ...imagedata-props }, field: { ...dataArray } }",
     "displayName": "Volume",
     "methods": [],
     "props": {
@@ -1257,7 +1355,7 @@
         "required": false,
         "description": "State of the volume",
         "defaultValue": {
-          "value": "{\n  image: { dimension: [10, 10, 10] },\n}",
+          "value": "{\r\n  image: { dimension: [10, 10, 10] },\r\n}",
           "computed": false
         }
       }
@@ -1303,7 +1401,7 @@
     }
   },
   "src/lib/components/VolumeDataRepresentation.react.js": {
-    "description": "VolumeDataRepresentation expect the following set of properties\n  - dimensions: [10, 20, 5]\n  - spacing: [1, 1, 1]\n  - origin: [0, 0, 0]\n  - rgb: [...]\n  - rgba: [...]\n  - scalars: [...]\n  - scalarsType: Float32Array",
+    "description": "VolumeDataRepresentation expect the following set of properties\r\n  - dimensions: [10, 20, 5]\r\n  - spacing: [1, 1, 1]\r\n  - origin: [0, 0, 0]\r\n  - rgb: [...]\r\n  - rgba: [...]\r\n  - scalars: [...]\r\n  - scalarsType: Float32Array",
     "displayName": "VolumeDataRepresentation",
     "methods": [],
     "props": {
@@ -1478,7 +1576,7 @@
     }
   },
   "src/lib/components/VolumeRepresentation.react.js": {
-    "description": "VolumeRepresentation is responsible to convert a vtkPolyData into rendering\nIt takes the following set of properties:\n  - colorBy: ['POINTS', ''],\n  - pointSize: 1,\n  - color: [1,1,1],",
+    "description": "VolumeRepresentation is responsible to convert a vtkPolyData into rendering\r\nIt takes the following set of properties:\r\n  - colorBy: ['POINTS', ''],\r\n  - pointSize: 1,\r\n  - color: [1,1,1],",
     "displayName": "VolumeRepresentation",
     "methods": [],
     "props": {
